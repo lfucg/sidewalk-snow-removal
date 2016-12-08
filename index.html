@@ -164,9 +164,9 @@
             div.innerHTML += '<div class="legend-toggle-container"><a href="#" class="legend-toggle">Legend</a></div>';
             var items = L.DomUtil.create('div', 'legend-items');
             //items.innerHTML += legendItem(key, background color, border style, border color);
-            items.innerHTML += legendItem('Rank 1', '#9F5C5B', 'none', 'none');
-            items.innerHTML += legendItem('Rank 2', '#2F75B5', 'none', 'none');
-            items.innerHTML += legendItem('Rank 3', '#9EBE83', 'none', 'none');
+            items.innerHTML += legendItem('Rank 1', '#FF7F7F', 'solid', '#E60000');
+            items.innerHTML += legendItem('Rank 2', '#73B2FF', 'solid', '#004DA8');
+            items.innerHTML += legendItem('Rank 3', '#55FF00', 'solid', '#38A800');
             $(div).append(items);
             return div;
         };
