@@ -108,7 +108,7 @@
             .run(function(error, featureCollection) {
                 var snow;
                 $.each(featureCollection.features, function(index, feature) {
-                    if (feature.layerId === 18) { roadname = feature.properties['ROADNAME'], rank = feature.properties['RANK'], responsibility = feature.properties['RESPONSIBILITY']; }
+                    if (feature.layerId === 18) { snow = feature.properties['Roadname'], rank = feature.properties['Rank'], responsibility = feature.properties['Responsibility']; }
                 });
                 showSnowPopup(map, latlng, snow);
             });
@@ -118,7 +118,7 @@
         if (!snow || snow === 'Null') {
             return false;
         } else {
-            var snowLanguage = '<h3>' + roadname + '<br>' + rank + '<br>' + responsibility + '</h3>';
+            var snowLanguage = '<h3>' + snow + '<br>' + rank + '<br>' + responsibility + '</h3>';
             snow = snowLanguage
         }
         var popup = L.popup({
