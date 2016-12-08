@@ -16,6 +16,25 @@
     <style>
         body { margin:0; padding:0; }
         #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+              .legend {
+            background-color: white;
+            padding: 10px;
+            line-height: 18px;
+            color: #555;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .legend-items {
+            display: none; /l* click to show */
+        }
+        .legend-item {
+            padding-top: 10px;
+        }
     </style>
   
 </head>
@@ -133,6 +152,34 @@
             map.panBy(new L.Point(0, -100));
         }, 500);
     };
+        var legendItem = function(key, bgcolor, brstyle, brcolor) {
+        return '<div class="legend-item"><i style="background: ' + bgcolor + '; border-style: ' + brstyle + '; border-color: ' + brcolor + ';"></i> ' + key + '</div>';
+    }
+    
+    var addLegend = function(map) {
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML += '<div class="legend-toggle-container"><a href="#" class="legend-toggle">Legend</a></div>';
+            var items = L.DomUtil.create('div', 'legend-items');
+            //items.innerHTML += legendItem(key, background color, border style, border color);
+            items.innerHTML += legendItem('Rank 1', '#9F5C5B', 'none', 'none');
+            items.innerHTML += legendItem('Rank 2', '#2F75B5', 'none', 'none');
+            items.innerHTML += legendItem('Rank 3', '#9EBE83', 'none', 'none');
+            $(div).append(items);
+            return div;
+        };
+
+        legend.addTo(map);
+        $('.legend-toggle').click(function(e) {
+            e.preventDefault();
+            $('.legend-items').toggle();
+        });
+    }
+
+    addLegend(map);
+
   
     // make a bar with navigation buttons
         var zoomBar = L.easyBar([
